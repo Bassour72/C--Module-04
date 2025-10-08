@@ -8,13 +8,13 @@
 class Ice : public AMateria
 {
 public:
-    Ice();                          // constructor
-    Ice(const Ice& other);          // copy constructor
-    Ice& operator=(const Ice& other); // copy assignment
-    virtual ~Ice();                 // destructor
+    Ice();
+    Ice(const Ice& other);
+    Ice& operator=(const Ice& other);
+    virtual ~Ice();
 
-    AMateria* clone() const;        // must return new Ice
-    void use(ICharacter& target);   // prints "* shoots an ice bolt at <name> *"
+    AMateria* clone() const;
+    void use(ICharacter& target);
 };
 
 #endif /* ICE_HPP */

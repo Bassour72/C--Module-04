@@ -1,7 +1,7 @@
 NAME      = InterfaceRecap
 
 CPP       = c++
-CPPFLAGS  = -Wall -Wextra -Werror -std=c++98  -Wshadow
+CPPFLAGS  = -Wall -Wextra -Werror -std=c++98  -Wshadow -fsanitize=address
 
 SRC       = main.cpp Character.cpp AMateria.cpp Cure.cpp Ice.cpp MateriaSource.cpp 
 OBJ       = $(SRC:.cpp=.o)

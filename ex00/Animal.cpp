@@ -13,7 +13,8 @@ Animal::Animal(const Animal& other) : type(other.type)
 
 Animal& Animal::operator=(const Animal& other)
  {
-    type = other.type;
+    if (this != &other)
+        type = other.type;
     return *this;
 }
 

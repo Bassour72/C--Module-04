@@ -1,18 +1,19 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal("Cat") 
+Cat::Cat() : AAnimal("Cat") 
 {
     std::cout << "Cat created" << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other) 
+Cat::Cat(const Cat& other) : AAnimal(other) 
 {
     std::cout << "Cat copied" << std::endl;
 }
 
 Cat& Cat::operator=(const Cat& other)
-{
-    Animal::operator=(other);
+{   
+    if (this != &other)
+        AAnimal::operator=(other);
     return *this;
 }
 

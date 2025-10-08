@@ -29,16 +29,21 @@ void Cat::makeSound() const
     std::cout << type << " says Meow!" << std::endl;
 }
 
-void Cat::addIdea(const std::string& idea) 
+void Cat::addIdea(const std::string& idea)
 {
-    _brain->setIdeas(idea);
+    if (_brain)
+        _brain->setIdeas(idea);
+    else
+        std::cout << "Cannot add idea: empty brain.\n";
 }
 
-void Cat::showLastIdea() const 
+void Cat::showLastIdea() const
 {
-    std::cout << "Cat's last idea: " << _brain->getIdeas() << std::endl;
+    if (_brain)
+        std::cout << "Cat's last idea: " << _brain->getIdeas() << std::endl;
+    else
+        std::cout << "Cat has no brain.\n";
 }
-
 Cat::~Cat() 
 {
     delete _brain;

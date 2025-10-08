@@ -9,7 +9,7 @@ Dog::Dog() : Animal("Dog")
 Dog::Dog(const Dog& other) : Animal(other) 
 {
     std::cout << "Dog copied" << std::endl;
-    _brain = new Brain(*other._brain); // deep copy
+    _brain = new Brain(*other._brain);
 }
 
 Dog& Dog::operator=(const Dog& other) 
@@ -28,15 +28,22 @@ void Dog::makeSound() const
 {
     std::cout << type << " says Bark!" << std::endl;
 }
-void Dog::addIdea(const std::string& idea) 
+void Dog::addIdea(const std::string& idea)
 {
-    _brain->setIdeas(idea);
+    if (_brain)
+        _brain->setIdeas(idea);
+    else
+        std::cout << "Cannot add idea: empty brain.\n";
 }
 
-void Dog::showLastIdea() const 
+void Dog::showLastIdea() const
 {
-    std::cout << "Dog's last idea: " << _brain->getIdeas() << std::endl;
+    if (_brain)
+        std::cout << "Dog's last idea: " << _brain->getIdeas() << std::endl;
+    else
+        std::cout << "Dog has no brain.\n";
 }
+
 
 Dog::~Dog() 
 {
