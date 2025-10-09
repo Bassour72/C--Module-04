@@ -51,7 +51,6 @@ void MateriaSource::learnMateria(AMateria* m)
 {
     if (!m || _idx >= 4)
         return;
-
     _materia[_idx] = m;
     _idx++;
 }

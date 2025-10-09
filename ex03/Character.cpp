@@ -3,30 +3,42 @@
 Character::Character(const std::string &name) : _name(name)
 {
     for (int i = 0; i < 4; i++)
-        inventoryTmp[i]  = inventory[i] = NULL;
+        inventoryTmp[i] = inventory[i] = NULL;
 }
 
-Character::Character(const Character& other) : _name(other._name)
+Character::Character(const Character &other) : _name(other._name)
 {
     for (int i = 0; i < 4; i++)
     {
         if (other.inventory[i])
+        {
             inventory[i] = other.inventory[i]->clone();
+            inventoryTmp[i] = inventory[i];
+        }
         else
-            inventoryTmp[i]  = inventory[i] = NULL;
+            inventoryTmp[i] = inventory[i] = NULL;
     }
 }
 
-Character& Character::operator=(const Character& other)
-{
+Character &Character::operator=(const Character &other)
+{ 
     if (this != &other)
     {
         _name = other._name;
         for (int i = 0; i < 4; i++)
         {
+            if (inventory[i] != inventoryTmp[i])
+            {
+                delete inventoryTmp[i];
+                inventoryTmp[i] = NULL;
+            }
             delete inventory[i];
+            inventory[i] = NULL;
             if (other.inventory[i])
+            {
                 inventory[i] = other.inventory[i]->clone();
+                inventoryTmp[i] = inventory[i];
+            }
             else
                 inventory[i] = NULL;
         }
@@ -41,46 +53,50 @@ Character::~Character()
         if (inventory[i] != inventoryTmp[i])
         {
             delete inventoryTmp[i];
-            inventoryTmp[i] =NULL;
+            inventoryTmp[i] = NULL;
         }
         delete inventory[i];
         inventory[i] = NULL;
     }
 }
 
-std::string const & Character::getName() const
+std::string const &Character::getName() const
 {
     return _name;
 }
-
-void Character::equip(AMateria* m)
+void Character::setName(std::string &name)
+{   
+    _name = name;
+}
+void Character::equip(AMateria *m)
 {
 
-    if (!m) 
+    if (!m)
         return;
-    
+
     for (int i = 0; i < 4; i++)
-    {   
+    {
         if (!inventory[i])
         {
             delete inventoryTmp[i];
             inventoryTmp[i] = NULL;
             inventory[i] = m;
             inventoryTmp[i] = m;
-            break;
+            return ;
         }
     }
+    delete m;
 }
 void Character::unequip(int idx)
 {
-    if (idx < 0 || idx >= 4) 
+    if (idx < 0 || idx >= 4)
         return;
     inventory[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target)
+void Character::use(int idx, ICharacter &target)
 {
-    if (idx < 0 || idx >= 4) 
+    if (idx < 0 || idx >= 4)
         return;
     if (inventory[idx])
         inventory[idx]->use(target);

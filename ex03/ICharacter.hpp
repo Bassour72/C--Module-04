@@ -15,6 +15,8 @@ public:
     virtual void equip(AMateria* m) = 0;
     virtual void unequip(int idx) = 0;
     virtual void use(int idx, ICharacter& target) = 0;
+    
 };
 
 #endif /* ICHARACTER_HPP */
+//todo (circular dependency).

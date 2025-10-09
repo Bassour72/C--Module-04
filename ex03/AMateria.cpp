@@ -15,6 +15,7 @@ void AMateria::setType(std::string &type)
 
 void AMateria::use(ICharacter& target)
 {
+   std::cout << "* The Materia shimmers faintly, releasing a default energy *\n";
     (void)target;
 }
 AMateria::~AMateria()
