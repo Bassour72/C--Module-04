@@ -9,7 +9,8 @@ class AAnimal
 protected:
     std::string type;
 public:
-    AAnimal(const std::string& t = "Animal");
+    AAnimal();
+    AAnimal(const std::string& t);
     AAnimal(const AAnimal& other);
     AAnimal& operator=(const AAnimal& other);
 

@@ -6,11 +6,12 @@
 class AMateria;
 class ICharacter
 {
-private:
-    // Data members
 
 public:
-    virtual ~ICharacter() {}
+    virtual ~ICharacter() 
+    {
+        std::cout << "[ICharacter] Destructor called\n";
+    }
     virtual std::string const & getName() const = 0;
     virtual void equip(AMateria* m) = 0;
     virtual void unequip(int idx) = 0;
@@ -19,4 +20,3 @@ public:
 };
 
 #endif /* ICHARACTER_HPP */
-//todo (circular dependency).

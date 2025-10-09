@@ -1,15 +1,21 @@
 
 #include "Animal.hpp"
 
+Animal::Animal() : type("Animal") 
+{
+    std::cout << "[Animal] Default constructor called. Type: " << type << std::endl;
+}
+
 Animal::Animal(const std::string& t) : type(t) 
 {
-    std::cout << "Animal created: " << type << std::endl;
+    std::cout << "[Animal] Parameterized constructor called. Type: " << type << std::endl;
 }
 
 Animal::Animal(const Animal& other) : type(other.type) 
 {
-    std::cout << "Animal copied: " << type << std::endl;
+    std::cout << "[Animal] Copy constructor called. Copied Type: " << type << std::endl;
 }
+
 
 Animal& Animal::operator=(const Animal& other)
 {

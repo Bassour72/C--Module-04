@@ -10,7 +10,8 @@ protected:
     std::string type;
 
 public:
-    Animal(const std::string& t = "Animal");
+    Animal();
+    Animal(const std::string& t);
     Animal(const Animal& other);
     Animal& operator=(const Animal& other);
 

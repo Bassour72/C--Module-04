@@ -3,6 +3,7 @@
 #include "Cat.hpp"
 int main()
 {
+    
     const AAnimal* j = new Dog();
     const AAnimal* i = new Cat();
     if (j)
@@ -13,7 +14,7 @@ int main()
     if (i)
     {    
         std::cout << i->getType() << " " << std::endl;
-        i->makeSound(); //will output the cat sound!
+        i->makeSound();
     }
      std::cout << std::endl;
     delete j;
